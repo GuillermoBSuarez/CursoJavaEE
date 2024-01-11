@@ -34,8 +34,7 @@
 			<artifactId>jakarta.servlet.jsp.jstl</artifactId>
 			<version>3.0.0</version>
 		</dependency>
-		<!--
-		https://mvnrepository.com/artifact/org.hibernate/hibernate-core-jakarta -->
+		<!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-core-jakarta -->
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-core-jakarta</artifactId>
@@ -47,6 +46,5 @@
 			<artifactId>mysql-connector-j</artifactId>
 			<version>8.1.0</version>
 		</dependency>
-
 	</dependencies>
 </project>

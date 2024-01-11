@@ -15,7 +15,7 @@ public class Producto {
 	private int idProducto;
 	private String nombre;
 	private String categoria;
-	@Column(name = "precio")		// necesario si columna y campo no tienenel mismo nombre, aquí es un ejemplo
+	@Column(name = "precio")		// necesario si columna y campo no tienen el mismo nombre, aquí es un ejemplo
 	private Double precio;
 
 	public Producto(int idProducto, String nombre, String categoria, Double precio) {

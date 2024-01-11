@@ -62,7 +62,7 @@ public class ProductosService {
 		query.setParameter(1, nombre);
 		
 		// es necesaria una transacción
-		EntityTransaction tx = getEntityManager().getTransaction();
+		EntityTransaction tx = em.getTransaction();
 		tx.begin();
 		query.executeUpdate();
 		tx.commit();
