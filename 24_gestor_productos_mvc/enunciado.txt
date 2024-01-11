@@ -1,0 +1,25 @@
+Cómo va a ser el controlador:
+
+¿Cuántos controladores de acción necesitamos?
+Un front-controller seguro, pero cuántas llamadas desde la capa
+cliente va a recibir? Nos fijamos en los html o ejecutamos y vemos:
+en la página de bienvenida hay tres entradas (nuevo, productos por
+categoría y eliminar), y todas entran en el FC.
+Si entramos en nuevo producto eso es una cuarta llamada, otra más
+el html de productos por categoría, otra el de eliminar.
+Pero en productos por categoría, si entramos en un listado de
+productos hay otro enlace, el de volver al home.
+
+Pero las entradas que sólo son para redirigir a un html no necesitan
+otro controlador de acción. Así, sólo necesitamos tres controladores
+de acción: grabar, buscar, eliminar. Y ya están hechos, pero vamos a
+renombrarlos: altaController, buscarController y eliminarController,
+además del frontController.
+
+Todas las llamadas al FC son iguales, y para que éste distinga qué
+debe hacer añadimos un parámetro. Se usa una convención:
+
+- Si la llamada al FC es para hacer algo se usa doX:
+  ".../controller?oper=doAlta", doBuscar, doEliminar"
+- Si es para ir a otra página, toX:
+  ".../controller?oper=toCrear, toBorrar, toBuscar".
