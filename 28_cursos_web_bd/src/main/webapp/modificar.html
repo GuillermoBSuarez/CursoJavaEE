@@ -39,12 +39,11 @@ input {
 </head>
 <body>
 	<div>
-		<h1>Añadir nuevo curso</h1>
-		<form action="FrontController?operation=doAlta" method="post">
+		<h1>Modificar duración</h1>
+		<form action="FrontController?operation=doModificar" method="post">
 			Nombre curso:<input type="text" name="denominacion" placeholder="Nombre del curso">
-			Duración curso:<input type="text" name="duracion" placeholder="Duración del curso"> 
-			Precio curso:<input type="text" name="precio" placeholder="Precio del curso"> 
-			<input type="submit" value="Guardar">
+			Nueva duración:<input type="text" name="nuevaDuracion" placeholder="Nueva duracion"> 
+			<input type="submit" value="Modificar">
 		</form>
 		<br>
 		<a href="menu.html">Salir</a>

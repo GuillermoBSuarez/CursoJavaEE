@@ -9,13 +9,12 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import service.CursosService;
 
-@WebServlet("/GuardarController")
-public class GuardarController extends HttpServlet {
-	
+@WebServlet("/ModificarController")
+public class ModificarController extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		CursosService service = new CursosService();
-		service.agregarCurso(request.getParameter("denominacion"), 
-				Integer.parseInt(request.getParameter("duracion")),
-				Double.parseDouble(request.getParameter("precio")));
+		service.modificarDuracion(request.getParameter("denominacion"), Integer.parseInt(request.getParameter("nuevaDuracion")));
 	}
 }

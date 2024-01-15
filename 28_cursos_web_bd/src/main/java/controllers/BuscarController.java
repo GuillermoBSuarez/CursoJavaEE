@@ -1,7 +1,7 @@
 package controllers;
 
 import java.io.IOException;
-import java.util.ArrayList;
+import java.util.List;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -16,7 +16,7 @@ public class BuscarController extends HttpServlet {
 	
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		CursosService service = new CursosService();
-		ArrayList<Curso> cursos = service.preciosCursoMax(Double.parseDouble(request.getParameter("precio")));
+		List<Curso> cursos = service.buscarPrecio(Double.parseDouble(request.getParameter("precio")));
 		request.setAttribute("cursos", cursos);
 	}
 }
