@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>arrays</title>
+</head>
+<body>
+    <script type="text/javascript">
+        
+        
+        // acceso a posiciones
+        console.log(data[0]);
+        data[1] = 20;
+
+        // agragar nuevos elementos
+        data.push(30);
+        data[3] = 16;
+        console.log(data);
+
+        // tamaño
+        console.log(data.length);
+
+        // recorrer
+        for(let n of data){
+            console.log(n);
+        }
+
+        data.forEach(n=>console.log(n));
+
+        data.forEach(function(n){
+            console.log(n);
+        })
+
+        // ordenar
+        data.sort(function(a, b){
+            return a-b;
+            // devolverá positivo si a es mayor y negativo si b es mayor,
+            // por lo que ordenará según ese positivo/negativo ascendentemente.
+            // Ignora el valor concreto, sólo atiende al signo. Con b-a será
+            // en orden inverso.
+        })
+
+        // unir elementos
+        console.log(data);
+        console.log(data.join("-"));
+    </script>
+</body>
+</html>

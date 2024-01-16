@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	.grande{color: blue; font-weight: 900; font-size: 40px;}
+	.peque{color: gray; font-weight: 100; font-size: 10px;}
+</style>
+</head>
+<body>
+	<p class="peque" onmouseenter="modificarEstilo(this, 'grande')" onmouseleave="modificarEstilo(this, 'peque')">TEXTO PRIMERO</p>
+	<p class="peque" onmouseenter="modificarEstilo(this, 'grande')" onmouseleave="modificarEstilo(this, 'peque')">TEXTO SEGUNDO</p>
+	<p class="peque" onmouseenter="modificarEstilo(this, 'grande')" onmouseleave="modificarEstilo(this, 'peque')">TEXTO TERCERO</p>
+	
+	<script type="text/javascript">
+		function modificarEstilo(obj, estilo){
+			obj.className=estilo;
+				// style para cambiar una propiedad, pero para asignar
+				// toda una clase nueva className
+		}
+	</script>
+</body>
+</html>

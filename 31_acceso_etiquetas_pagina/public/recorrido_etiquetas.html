@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<p>Párrafo 1</p>
+	<p>Párrafo 2</p>
+	<p>Párrafo 3</p>
+	<br>
+	<input type="button" value="negrita" onclick="negrita()">
+
+	<script type="text/javascript">
+		function negrita(){
+			var parrafos = document.getElementsByTagName("p");
+
+			// de trayón:
+			// parrafos.style.fontWeight="bold";
+			// pero queremos RECORRER un for:
+
+			for (let p of parrafos){
+				// p.innerHTML="<b>"+p.innerText+"</b>";
+				p.style.fontWeight="bold";
+			}
+		}
+	</script>
+</body>
+</html>

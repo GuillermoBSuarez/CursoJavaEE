@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<input type="text" id="campo"><br><br>
+	<input type="button" value="valor" onclick="mostrarDato();">
+	<p id="p1">
+		dato en párrafo
+	</p>
+	
+	<script type="text/javascript">
+		function mostrarDato() {
+			// muestra el valor de la caja de texto
+			
+			// primero obtenemos el objeto etiqueta
+			var obj = document.getElementById("campo");
+			// con la propiedad value obtenemos...
+			alert("Texto: "+obj.value);
+
+			// para acceder a etiquetas que no sean con troles html: textbox, listas, etc.
+			var pr = document.getElementById("p1");
+			alert("Párrafo: "+pr.innerText);
+
+			// reseteamos
+			obj.value="";
+			pr.innerText="";
+		}
+	</script>
+</body>
+</html>

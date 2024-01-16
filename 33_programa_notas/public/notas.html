@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Notas</title>
+</head>
+<body>
+    <input type="text" value="Introduzca nota" id="nota">
+    <input type="button" value="Grabar" onclick="grabar()">
+    <br>
+    <br>
+    <input type="button" value="Media" onclick="media()">
+    <h2 id="media"></h2>
+    <br>
+    <input type="button" value="Aprobados" onclick="aprobados()">
+    <h2 id="aprobados"></h2>
+    <br>
+    <input type="button" value="Ver notas" onclick="verNotas()">
+    <h2 id="notas"></h2>
+    
+    <script>
+        var notas = [];
+
+        function grabar(){
+            notas.push(parseFloat(document.getElementById("nota").value));
+            document.getElementById("nota").value="";
+        }
+        function media(){
+            var total = 0;
+            for(let n of notas){
+                total += n;
+            }
+            document.getElementById("media").innerText=total/notas.length;
+        }
+        function aprobados(){
+            var aprobados = 0;
+            for(let a of notas){
+                if (a>=5){ aprobados++; }
+            }
+            document.getElementById("aprobados").innerText=aprobados;
+        }
+        function verNotas(){
+            document.getElementById("notas").innerText=notas.join(" - ");
+        }
+    </script>
+</body>
+</html>

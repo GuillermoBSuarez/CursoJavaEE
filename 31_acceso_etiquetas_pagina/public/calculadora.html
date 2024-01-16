@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Calculadora</title>
+</head>
+<body>
+    <input type="text" value="Número 1" id="num1">
+    <input type="text" value="Número 2" id="num2">
+    <br><br>
+    <input type="button" value="Sumar" onclick="sumar()">
+    <input type="button" value="Multiplicar" onclick="multiplicar()">
+    <input type="button" value="Dividir" onclick="dividir()">
+    <br><br>
+    <h1 id="resultado"></h1>
+
+    <script type="text/javascript">
+        function sumar(){
+            var op = parseFloat(document.getElementById("num1").value) + parseFloat(document.getElementById("num2").value);
+            document.getElementById("resultado").innerText = op;
+            num1.value="";
+            num2.value="";
+        }
+        function multiplicar(){
+            var op = parseFloat(document.getElementById("num1").value) * parseFloat(document.getElementById("num2").value);
+            document.getElementById("resultado").innerText = op;
+            num1.value="";
+            num2.value="";
+        }
+        function dividir(){
+            var op = parseFloat(document.getElementById("num1").value) / parseFloat(document.getElementById("num2").value);
+            document.getElementById("resultado").innerText = op;
+            num1.value="";
+            num2.value="";
+        }
+
+    </script>
+
+
+</body>
+</html>
