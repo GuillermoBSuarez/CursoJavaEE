@@ -6,7 +6,7 @@
 <meta http-equiv="Last-Modified" content="0">
 <meta http-equiv="Cache-Control" content="no-cache, mustrevalidate">
 <meta http-equiv="Pragma" content="no-cache"> 
-<meta charset="ISO-8859-1">
+<meta charset="UTF-8">
 <title>Crear Producto</title>
 <style type="text/css">
 body {
@@ -39,15 +39,46 @@ input {
 </head>
 <body>
 	<div>
-		<h1>A�adir nuevo curso</h1>
-		<form action="FrontController?operation=doAlta" method="post">
-			Nombre curso:<input type="text" name="denominacion" placeholder="Nombre del curso">
-			Duraci�n curso:<input type="text" name="duracion" placeholder="Duraci�n del curso"> 
-			Precio curso:<input type="text" name="precio" placeholder="Precio del curso"> 
+		<h1>Añadir nuevo curso</h1>
+		<form action="FrontController?operation=doAlta" onsubmit="return validar()" method="post">
+			Nombre curso:<input type="text" id="denominacion" name="denominacion" placeholder="Nombre del curso">
+			Duración curso:<input type="text" id="duracion" name="duracion" placeholder="Duración del curso"> 
+			Precio curso:<input type="text" id="precio" name="precio" placeholder="Precio del curso"> 
 			<input type="submit" value="Guardar">
 		</form>
 		<br>
 		<a href="menu.html">Salir</a>
 	</div>
+	
+	<!-- Bloque añadido tras ver validaciones en ejercicio 36 -->
+	<script type="text/javascript">
+        function validar(){
+            var denominacion = document.getElementById("denominacion").value;
+            var duracion = document.getElementById("duracion").value;
+            var precio = document.getElementById("precio").value;
+            
+            // Condiciones:
+			// campos numéricos positivos
+			// duración número entero
+			// no de admiten cursos conteniendo "PHP"
+            var mensaje = "";
+            if (denominacion.includes("PHP")){
+				mensaje += "No se admiten cursos de esa basura. ";
+			}
+			if (duracion<=0||precio<=0){
+				mensaje += "La duración y el precio deben ser positivos. "
+			}
+			if (duracion.includes(".")){
+				mensaje += "La duración debe ser un número entero."
+			}
+			if (mensaje != "") {
+				alert(mensaje);
+                return false;
+            } else {
+				alert("Datos válidos");
+                return true;
+            }
+        }        
+    </script>
 </body>
 </html>

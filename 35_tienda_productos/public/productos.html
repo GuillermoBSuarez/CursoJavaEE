@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Notas</title>
+</head>
+<body>
+    <input type="text" placeholder="Nombre producto" id="nombre">
+    <input type="text" placeholder="Categoría" id="categoria">
+    <input type="text" placeholder="Precio" id="precio">
+    <br>
+    <input type="button" value="Grabar" onclick="grabar()">
+    <br>
+    ____________________________________________________________
+    <br><br>
+    <input type="text" placeholder="Categoría" id="categoriaBuscar">
+    <input type="button" value="Buscar" onclick="buscar()">
+    <br><br><br>
+        <div id="tabla">
+            
+        </div>
+    
+    <script type="text/javascript">
+        var productos = [];
+
+        function grabar(){
+            var producto = new Object();
+            producto.nombre=    document.getElementById("nombre").value;
+            producto.categoria=  document.getElementById("categoria").value;
+            producto.precio=    parseFloat(document.getElementById("precio").value);
+            productos.push(producto);
+
+            document.getElementById("nombre").value="";
+            document.getElementById("categoria").value="";
+            document.getElementById("precio").value="";
+            document.getElementById("nombre").focus();
+        }
+
+        function buscar(){
+            var inner = "<table border=\"1\"><tr><th>Nombre</th><th>Categoría</th><th>Precio</th></tr>";
+            for(let p of productos){
+                if (p.categoria == document.getElementById("categoriaBuscar").value){
+                    var inner = inner + "<tr><td>"+p.nombre+"</td><td>"+p.categoria+"</td><td>"+p.precio+"</td></tr>";
+                }
+            }
+            document.getElementById("tabla").innerHTML = inner+"</table>";
+        }        
+    </script>
+</body>
+</html>

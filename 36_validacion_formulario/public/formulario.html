@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Notas</title>
+</head>
+<body>
+    <form action = "Servlet" onsubmit="return validar()">
+        <!-- el valor de onsubmit decide si se envían o no los valores:
+        true = se envían; false = no se envían.
+        No vale con el nombre de la función, sin return, el onsubmit exige
+        la instrucción. Y el botón, en vez de button, debe ser submit, claro. -->
+        <input type="text" name="usuario" placeholder="Usuario" id="usuario"/><br>
+        <input type="password" name="password" placeholder="Contraseña" id="password"/><br>
+        <input type="submit" value="Comprobar">
+    </form>
+
+    <script type="text/javascript">
+        function validar(){
+            var usuario = document.getElementById("usuario").value;
+            var password = document.getElementById("password").value;
+            if (usuario.length>=3 && password.length>=3){
+                alert("Datos válidos");
+                return true;
+            } else {
+                alert("Datos no válidos");
+                return false;
+            }
+        }        
+    </script>
+</body>
+</html>
