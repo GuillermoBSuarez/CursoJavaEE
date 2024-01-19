@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<!-- API de JQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<body>
+	Introduce número:<input type="text" id="num"><br>
+	<input type="button" value="cuadrado" onclick="calcular()">
+	<input type="button" value="limpiar" id="btnLimpiar">
+	<button>prueba</button>
+	<br><br>
+	<p id="res"></p>
+	
+	<script type="text/javascript">
+		// asociamos evento (botón limpiar) con la función limpiar()
+		$("#btnLimpiar").click(limpiar);
+		// sólo nombre de la función, no llamada, es decir, sin paréntesis
+
+		function calcular(){
+			var num=$("#num").val();
+			// anotación jquery:
+			// document.getElementById("elemento") = $("#elemento")
+			num*=num;
+			$("#res").html("<b>El cuadrado es: "+num+"</b>");
+		}
+
+		function limpiar(){
+			$("#num").val("");
+			$("#res").html("");
+		}
+	</script>
+</body> 
+</html>

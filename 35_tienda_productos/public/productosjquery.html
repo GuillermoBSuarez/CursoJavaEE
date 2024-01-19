@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Notas</title>
+
+<!-- API de JQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+</head>
+<body>
+
+    <!-- Adaptación a JQuery de 35 > productos ESTÁ SIN TERMINAR-->
+
+    <input type="text" placeholder="Nombre producto" id="nombre">
+    <input type="text" placeholder="Categoría" id="categoria">
+    <input type="text" placeholder="Precio" id="precio">
+    <br>
+    <button id="grabar">Grabar</button>
+    <br>
+    ____________________________________________________________
+    <br><br>
+    <input type="text" placeholder="Categoría" id="categoriaBuscar">
+    <button id="buscar">Buscar</button>
+    <br><br><br>
+        <div id="tabla">
+            
+        </div>
+    
+    <script type="text/javascript">
+        $("#grabar").click(grabar);
+        $("#buscar").click(buscar);
+
+        var productos = [];
+
+        function grabar(){
+            var producto = new Object();
+            producto.nombre=    $("#nombre").val;
+            producto.categoria=  $("#categoria").val;
+            producto.precio=    parseFloat($("#precio").val);
+            productos.push(producto);
+
+            $("#nombre").val("");
+            $("#categoria").val("");
+            $("#precio").val("");
+            $("#nombre").focus();
+        }
+
+        function buscar(){
+            var inner = "<table border=\"1\"><tr><th>Nombre</th><th>Categoría</th><th>Precio</th></tr>";
+            $.each(productos, function(i, p){
+                if (p.categoria == $("#categoriaBuscar").val){
+                    var inner = inner + "<tr><td>"+p.nombre+"</td><td>"+p.categoria+"</td><td>"+p.precio+"</td></tr>";
+                }
+            });
+            $("#tabla").html = inner+"</table>";
+        }        
+    </script>
+</body>
+</html>

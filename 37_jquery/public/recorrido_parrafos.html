@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<!-- API de JQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+
+<!-- Adaptación a JQuery del 31 > recorrido_parrafos -->
+
+<body>
+	<p>Párrafo 1</p>
+	<p>Párrafo 2</p>
+	<p>Párrafo 3</p>
+	<br>
+	<input type="button" value="negrita" id="btnNegrita">
+
+	<script type="text/javascript">
+		$("#btnNegrita").click(negrita);
+
+		function negrita(){
+			$.each($("p"), function(i, e){
+			// a cada (each) elemento tipo p (párrafo) le aplico la función function,
+			// que recibe el índice (i) del elemento y el propio elemento (e).
+				e.style.fontWeight="Bold";
+			});
+
+			// otro método: a la propia colección le paso each,
+			// pero no tenemos índice.
+			$("p").each(function(){
+				$(this).css("font-weight", "Bold");
+			});
+
+			// Y más sencillo:
+			$("p").css("font-weight", "Bold");
+		}
+	</script>
+</body> 
+</html>
