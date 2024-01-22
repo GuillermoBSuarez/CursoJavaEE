@@ -28,6 +28,12 @@ public class FrontController extends HttpServlet {
 		case "doLibrosTema":
 			request.getRequestDispatcher("LibrosTemaController").forward(request, response);
 			return; // en peticiones AJAX, la respuesta la hace el servlet controlador.
+		case "doAgregar":
+			request.getRequestDispatcher("AgregarController").forward(request, response);
+			return;
+		case "doQuitar":
+			request.getRequestDispatcher("QuitarCarritoController").forward(request, response);
+			return;
 		}
 	}
 }

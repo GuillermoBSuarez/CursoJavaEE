@@ -21,13 +21,9 @@
 						<td><%=pr.getPrecio()%></td>
 						<td><%=pr.getCategoria()%></td>
 						<td><a href="EliminarCarritoServlet?nombre=<%=pr.getNombre()%>">Eliminar</a></td>
-					</tr>
-				
-				<%} %>
-			
-			</table>
-			
-		
+					</tr>				
+				<%} %>			
+			</table>					
 		<%}%>
 		<br><br>
 		<a href="menu.html">volver</a>

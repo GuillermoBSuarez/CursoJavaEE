@@ -27,4 +27,8 @@ public class LibrosService {
 						"select l from Libro l where l.idTema=" + idTema , Libro.class )
 				.getResultList();
 	}
+	
+	public Libro getLibro(int isbn) {
+		return getEntityManager().find(Libro.class, isbn);
+	}
 }
