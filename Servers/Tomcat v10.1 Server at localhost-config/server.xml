@@ -140,7 +140,7 @@
              Note: The pattern used is equivalent to using pattern="common" -->
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log" suffix=".txt"/>
 
-      <Context docBase="39_buscador_cursos" path="/39_buscador_cursos" reloadable="true" source="org.eclipse.jst.jee.server:39_buscador_cursos"/><Context docBase="40_libreria_v1" path="/40_libreria_v1" reloadable="true" source="org.eclipse.jst.jee.server:40_libreria_v1"/><Context docBase="41_libreria_v2" path="/41_libreria_v2" reloadable="true" source="org.eclipse.jst.jee.server:41_libreria_v2"/></Host>
+      <Context docBase="39_buscador_cursos" path="/39_buscador_cursos" reloadable="true" source="org.eclipse.jst.jee.server:39_buscador_cursos"/><Context docBase="40_libreria_v1" path="/40_libreria_v1" reloadable="true" source="org.eclipse.jst.jee.server:40_libreria_v1"/><Context docBase="41_libreria_v2" path="/41_libreria_v2" reloadable="true" source="org.eclipse.jst.jee.server:41_libreria_v2"/><Context docBase="42_libreria_v2_dto" path="/42_libreria_v2_dto" reloadable="true" source="org.eclipse.jst.jee.server:42_libreria_v2_dto"/><Context docBase="43_libreria_cdi" path="/43_libreria_cdi" reloadable="true" source="org.eclipse.jst.jee.server:43_libreria_cdi"/></Host>
     </Engine>
   </Service>
 </Server>
