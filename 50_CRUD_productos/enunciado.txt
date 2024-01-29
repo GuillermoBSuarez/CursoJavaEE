@@ -1,0 +1,13 @@
+CRUD productos
+
+- Altas de productos, evitando duplicidades de nombres
+- Buscar por categoría
+- Modificar precio a partir de nombre
+- Eliminar por nombre
+
+Pasos:
+- Dependencias (Maven)
+- Entidades
+- Lógica:
+	- Interfaces
+	- Implementación
