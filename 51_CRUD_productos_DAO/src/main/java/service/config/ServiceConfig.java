@@ -13,7 +13,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @EnableTransactionManagement
 @Configuration
-@ComponentScan(basePackages = { "service.implementation" })
+@ComponentScan(basePackages = { "service.implementations", "DAO.implementations" })
 public class ServiceConfig {
 
 	@Bean

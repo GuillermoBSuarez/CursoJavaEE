@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import model.Producto;
-import service.implementation.ProductoServiceImpl;
+import service.implementations.ProductoServiceImpl;
 import service.interfaces.ProductoService;
 
 @Controller

@@ -3,6 +3,7 @@ package service.implementation;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
@@ -24,6 +25,7 @@ public class ProductoServiceImpl implements ProductoService {
 	}
 	
 	@Override
+	@Transactional
 	public boolean agregar(Producto producto) {				// C-reate
 		if ( buscarProducto(producto.getNombre()) != null ) // Si encuentra un producto con ese nombre...
 			return false;
@@ -43,6 +45,7 @@ public class ProductoServiceImpl implements ProductoService {
 	}
 
 	@Override
+	@Transactional
 	public void actualizar(String nombre, Double precio) {	// U-pdate
 		EntityTransaction tx = em.getTransaction();
 		tx.begin();
@@ -54,6 +57,7 @@ public class ProductoServiceImpl implements ProductoService {
 	}
 	
 	@Override
+	@Transactional
 	public Producto eliminar(String nombre) {				// D-elete
 		Producto producto = buscarProducto(nombre);
 		if (producto == null) return null;					// Si no encuentra el producto a borrar, null
