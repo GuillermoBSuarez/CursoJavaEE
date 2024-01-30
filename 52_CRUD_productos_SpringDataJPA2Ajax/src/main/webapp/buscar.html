@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script> 
+		<style type="text/css">
+			body {
+				color: purple;
+			}
+			
+			h1 {
+				text-align: center;
+			}
+			
+			div {
+				width: 400px;
+				margin: 50px auto;
+				padding: 15px;
+				background-color: smocke;
+				border: 1px solid purple; input { display : block;
+				margin-bottom: 15px;
+			}
+			
+			input {
+				color: purple;
+				margin: 0 auto;
+				display: block;
+				margin-bottom: 15px;
+				border: 1px solid purple;
+				padding: 7px;
+				display: block;
+			}}
+		</style>
+	</head>
+	<body>
+		<div>
+			<h1>Productos por categoría</h1>
+			<input type="text" id="categoria" name="categoria"
+				placeholder="Categoría del producto"> <input type="button"
+				id="btnMostrar" value="Mostrar">
+		</div>
+		<br><br><br>
+		
+		<div id="tablaProductos"></div>
+		<br><br>
+		<a href="toMenu">Volver</a>
+		
+		<script type="text/javascript">
+			$("#btnMostrar").click(function() {
+				var url = "buscar";
+				var params = {"categoria" : $("#categoria").val()};
+				gestionarPeticion(url, params);
+			});
+	
+			function gestionarPeticion(url, params) {
+				$.get(url, params, function(data) {
+					var tabla = "<table border='1'><tr><th>Producto</th><th>Precio</th></tr>";
+					$.each(data, function(i, p) { tabla += "<tr><td>" + p.nombre + "</td><td>" + p.precio + "</td></tr>"; });
+					tabla += "</table>";
+					$("#tablaProductos").html(tabla);
+				});
+			}
+		</script>
+	</body>
+</html>

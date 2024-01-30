@@ -51,7 +51,10 @@ public class ProductoDAOImpl implements ProductosDAO {
 		porque después de buscarlo antes en el find, la ejecución ha salido del contexto 
 		de persistencia, es decir, del EntityManager. Al volver para hacer delete
 		se crea OTRO EntityManager y ya no entiende el producto como parte del contexto
-		de persistencia, hay que buscarlo nuevamente, o bien borrar por nombre. */
+		de persistencia, hay que buscarlo nuevamente, o bien borrar por nombre.
+		
+		Más sencillo: em.remove(em.merge(producto));
+		porque merge sí devuelve una entidad */
 		em.remove(em.find(Producto.class, producto.getIdProducto()));
 	}
 

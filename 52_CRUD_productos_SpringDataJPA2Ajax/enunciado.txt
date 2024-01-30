@@ -1,0 +1,14 @@
+Incorporamos Ajax. Ver pom.xml
+
+No afecta a lógica ni dao, pero sí a vistas y controller, porque
+el método de búsqueda ya no envia a una página de resultados,
+sino a la misma página de consulta, a la que le envía un json con 
+los resultados de la búsqueda.
+
+Los cargará dinámicamente en una tabla.
+Ver productoController.buscar. En el módulo además añadimos una etiqueta
+@ResponseBody en la declaración de la función para indicar que es petición AJAX,
+que lo que devuelve no es una dirección sino que se devuelve el resultado al body.
+
+También desaparece la página de resultados, que se añaden a la de buscar. Ver cómo queda,
+porque el form desaparece, el botón ya no es submit sino un botón normal...

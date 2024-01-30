@@ -1,0 +1,4 @@
+Dividimos la lógica de negocio en dos capas según el patrón DAO: lógica y acceso a datos.
+Por orden:
+- se crea la capa DAO
+- se crea la lógica
