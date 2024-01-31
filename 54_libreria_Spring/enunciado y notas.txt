@@ -1,0 +1,10 @@
+Basado en el 44 pero con Spring, DAO, Thymeleaf y to' la pesca.
+
+1. Convertir a Maven.
+2. Heredar el maven.parent
+3. Models.
+4. Un DAO por model
+5. Dos parejas (interfaz e implementación) de servicio:
+para clientes y libros. De temas no es necesaria.
+6. Dos controllers, para Cliente y Libros.
+
