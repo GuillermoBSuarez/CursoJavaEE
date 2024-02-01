@@ -12,8 +12,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import dtos.ClienteDTO;
+import dtos.LibroDTO;
 import jakarta.servlet.http.HttpSession;
-import model.Cliente;
 import model.Libro;
 import service.interfaces.ClienteService;
 import service.interfaces.LibroService;
@@ -26,7 +27,7 @@ public class libreriaController {
 	LibroService libroService;
 	
 	@PostMapping(value = "agregarCliente")
-	public String agregarCliente(@ModelAttribute Cliente cliente, Model model) {
+	public String agregarCliente(@ModelAttribute ClienteDTO cliente, Model model) {
 		if (!clienteService.agregar(cliente)) {
 			model.addAttribute("mensajeError", cliente.getUsuario() + " ya existe.");
 			return "nuevo";
@@ -51,16 +52,16 @@ public class libreriaController {
 	// = LibrosController de Ej. 44
 	// produces es opcional en el caso de json
 	@GetMapping(value = "getLibrosTema", produces = "application/json")
-	public @ResponseBody List<Libro> getLibrosTema(@RequestParam("idTema") int idTema) {
+	public @ResponseBody List<LibroDTO> getLibrosTema(@RequestParam("idTema") int idTema) {
 		return libroService.getLibrosTema(idTema);
 	}
 
 	// = AgregarController de Ej. 44
 	@GetMapping(value = "agregar", produces="application/json")
-	public @ResponseBody List<Libro> agregar(@RequestParam("isbn") int isbn, HttpSession sesion) {
-		List<Libro> carrito = new ArrayList<>(); 
+	public @ResponseBody List<LibroDTO> agregar(@RequestParam("isbn") int isbn, HttpSession sesion) {
+		List<LibroDTO> carrito = new ArrayList<>(); 
 		if (sesion.getAttribute("carrito") != null)
-			carrito = (List<Libro>) sesion.getAttribute("carrito");
+			carrito = (List<LibroDTO>) sesion.getAttribute("carrito");
 		carrito.add(libroService.getLibro(isbn));
 		sesion.setAttribute("carrito", carrito);
 		return carrito;
@@ -68,10 +69,10 @@ public class libreriaController {
 		
 	// = QuitarCarritoController de Ej. 44
 	@GetMapping(value = "quitar")
-	public @ResponseBody List<Libro> quitar(@RequestParam("posicion") int pos, HttpSession sesion) {
-		List<Libro> carrito = new ArrayList<>(); 
+	public @ResponseBody List<LibroDTO> quitar(@RequestParam("posicion") int pos, HttpSession sesion) {
+		List<LibroDTO> carrito = new ArrayList<>(); 
 		if (sesion.getAttribute("carrito") != null) {
-			carrito = (List<Libro>) sesion.getAttribute("carrito");
+			carrito = (List<LibroDTO>) sesion.getAttribute("carrito");
 			carrito.remove(pos);
 		}
 		sesion.setAttribute("carrito", carrito);

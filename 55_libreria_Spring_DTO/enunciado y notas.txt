@@ -1,0 +1,12 @@
+Si se usan DTOs hay que usar un mapeador. Se trae todo del Ej. 44
+
+Ahora queremos que Spring instancie la clase mapeador,
+así que le quitamos el static y le añadimos la etiqueta correspondiente,
+@Component.
+
+Tampoco se instancia LibrosServiceImpl sino que lo inyecta Spring,
+@Autowired
+
+En las interfaces de negocio (service.interfaces) cambiamos las
+entidades por DTOs, así como en las implementaciones, donde
+también incluimos el mapeador.

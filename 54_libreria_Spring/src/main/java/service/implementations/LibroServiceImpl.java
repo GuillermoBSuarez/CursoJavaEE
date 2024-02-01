@@ -1,4 +1,4 @@
-package service.implementation;
+package service.implementations;
 
 import java.util.List;
 import java.util.Optional;
@@ -17,6 +17,7 @@ public class LibroServiceImpl implements LibroService {
 
 	/* Inyectamos ambos DAO y cada uno con su etiqueta	@Autowired
 	porque no vamos a hacer un service para Tema, se unifica aquí. */
+	@Autowired
 	LibroDAO libroDAO;
 	@Autowired
 	TemaDAO temaDAO;
@@ -30,7 +31,7 @@ public class LibroServiceImpl implements LibroService {
 	public List<Libro> getLibrosTema(int idTema) {
 		return (idTema == 0) ?
 				libroDAO.findAll() :
-				libroDAO.findByTema(idTema) ;
+				libroDAO.findByIdTema(idTema) ;
 	}
 
 	@Override

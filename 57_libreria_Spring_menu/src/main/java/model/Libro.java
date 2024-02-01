@@ -2,6 +2,8 @@ package model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -17,5 +19,8 @@ public class Libro {
 	private int isbn;
 	private String titulo, autor;
 	private double precio;
-	private int paginas, idTema;
+	private int paginas;
+	@ManyToOne()
+	@JoinColumn(name="idTema", referencedColumnName = "idTema")
+	private Tema tema;		
 }	

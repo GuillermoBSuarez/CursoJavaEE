@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<!-- API de JQuery -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+		
+		<title>Visor</title>
+		<style type="text/css">
+			body {
+				color: purple;
+			}
+			
+			h1 {
+				text-align: center;
+			}
+			
+			div {
+				width: 400px;
+				margin: 50px auto;
+				padding: 15px;
+				background-color: smocke;
+				border: 1px solid purple; input { display : block;
+				margin-bottom: 15px;
+			}
+			
+			input {
+				color: purple;
+				margin: 0 auto; 
+				display : block;
+				margin-bottom: 15px;
+				border: 1px solid purple;
+				padding: 7px;
+				display: block;
+			}}
+		</style>
+	</head>
+	<body>
+		<div>
+			<h1>Seleccione tema:</h1>
+			<select id="listaTemas" onchange="getLibrosTema()">
+				<option value="0">-Todos-</option>
+				<option th:each="tema : ${temas}" th:value="${tema.idTema}" th:text="${tema.tema}"></option>
+			</select>
+			<br><br>
+
+			<div id="tabla"></div>
+			<br><br>
+
+			<div id="carrito"></div>
+	
+			<script type="text/javascript">
+				function getLibrosTema(){
+					$.get(	"getLibrosTema",
+						  	{"idTema":$("#listaTemas").val()},
+						  	function(temas){
+							  	var tabla = "<table border='1'><tr><th>ISBN</th><th>Título</th><th>Autor</th><th>Precio</th><th>Páginas</th><th>Tema</th><th></th></tr>";
+								$.each(temas, function(indice, libro){
+									tabla += "<tr><td>"+libro.isbn+"</td><td>"+libro.titulo+"</td><td>"+libro.autor+"</td><td>"+libro.precio+"</td><td>"+libro.paginas+"</td><td>"+libro.idTema+"</td><td><a href='#' onclick='agregar("+libro.isbn+")'>Agregar</a></td></tr>";
+									// Ojo, que ahora libro no es un DTO y no hay mapeador, así que no se puede poner el tema, sólo el idTema, que lo que tiene libro.
+								});
+								tabla += "</table>";
+								$("#tabla").html(tabla);}
+					);
+				}
+									
+				function agregar(isbn){
+					var url = "agregar";
+					var params = {"isbn":isbn};
+					pintarCarrito(url, params);
+				}
+				
+				function quitar(pos){
+					var url = "quitar";
+					var params = {"posicion":pos};
+					pintarCarrito(url, params);
+				}
+				
+				function pintarCarrito(url, params){
+					$.get( url, params, function(libros){
+						var carrito = "<table border='1'><tr><th>ISBN</th><th>Título</th><th>Autor</th><th>Precio</th><th>Páginas</th><th>Tema</th><th></th></tr>";
+						$.each(libros, function(indice, libro){
+							carrito += "<tr><td>"+libro.isbn+"</td><td>"+libro.titulo+"</td><td>"+libro.autor+"</td><td>"+libro.precio+"</td><td>"+libro.paginas+"</td><td>"+libro.idTema+"</td><td><a href='#' onclick='quitar("+indice+")'>Quitar</a></td></tr>";
+						});
+						carrito += "</table>";
+						$("#carrito").html(carrito);}
+					)
+				}
+			</script>
+		</div>
+	</body>
+</html>

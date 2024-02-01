@@ -1,0 +1,22 @@
+Tras el login, añadir una página Menú con:
+-consultar/comprar libros
+-mis compras
+
+"Mis compras" llevará a una página con:
+- Título: compras de [usuario]
+- tabla con título y fecha de compra
+
+Usaremos la tabla ventas de la BD libros
+
+
+Crear javabean Venta
+Relaciones con las tablas
+DTO VentaDAO
+Actualizar mapeador
+DAOs
+Lógica negocio
+Controlador
+Vistas
+
+unidireccional - venta-libro venta contiene el libro
+bidireccional - venta-cliente ambos contienen datos de la otra

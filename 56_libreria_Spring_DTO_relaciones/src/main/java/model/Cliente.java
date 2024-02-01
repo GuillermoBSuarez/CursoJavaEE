@@ -9,16 +9,15 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Entity
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 @Data
-@Table(name = "productos")
-public class Producto {
+@Entity
+@Table(name = "clientes")
+public class Cliente {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int idProducto;
-	private String nombre;
-	private double precio;
-	private String categoria;
-}
+	private int idCliente;
+	private String usuario, password, email;
+	private int telefono;
+}	
