@@ -9,7 +9,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Data
 public class LibroDTO {
-	@Id
 	private int isbn;
 	private String titulo, autor;
 	private double precio;

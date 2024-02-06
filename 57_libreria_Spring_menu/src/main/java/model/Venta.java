@@ -22,10 +22,13 @@ public class Venta {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idVenta;
-	private int idCliente;
-	private int idLibro;
 	private Date fecha;
+	
 	@ManyToOne()
-	@JoinColumn(name="isbn", referencedColumnName = "isbn")
+	@JoinColumn(name = "idLibro", referencedColumnName = "isbn")
 	private Libro libro;
+
+	@ManyToOne()
+	@JoinColumn(name = "idCliente", referencedColumnName = "idCliente")
+	private Cliente cliente;
 }

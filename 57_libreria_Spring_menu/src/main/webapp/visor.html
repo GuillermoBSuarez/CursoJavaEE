@@ -42,50 +42,54 @@
 				<option th:each="tema : ${temas}" th:value="${tema.idTema}" th:text="${tema.tema}"></option>
 			</select>
 			<br><br>
-
-			<div id="tabla"></div>
-			<br><br>
-
-			<div id="carrito"></div>
-	
-			<script type="text/javascript">
-				function getLibrosTema(){
-					$.get(	"getLibrosTema",
-						  	{"idTema":$("#listaTemas").val()},
-						  	function(temas){
-							  	var tabla = "<table border='1'><tr><th>ISBN</th><th>Título</th><th>Autor</th><th>Precio</th><th>Páginas</th><th>Tema</th><th></th></tr>";
-								$.each(temas, function(indice, libro){
-									tabla += "<tr><td>"+libro.isbn+"</td><td>"+libro.titulo+"</td><td>"+libro.autor+"</td><td>"+libro.precio+"</td><td>"+libro.paginas+"</td><td>"+libro.temaDTO.tema+"</td><td><a href='#' onclick='agregar("+libro.isbn+")'>Agregar</a></td></tr>";
-									// Ojo, que ahora libro no es un DTO y no hay mapeador, así que no se puede poner el tema, sólo el idTema, que lo que tiene libro.
-								});
-								tabla += "</table>";
-								$("#tabla").html(tabla);}
-					);
-				}
-									
-				function agregar(isbn){
-					var url = "agregar";
-					var params = {"isbn":isbn};
-					pintarCarrito(url, params);
-				}
-				
-				function quitar(pos){
-					var url = "quitar";
-					var params = {"posicion":pos};
-					pintarCarrito(url, params);
-				}
-				
-				function pintarCarrito(url, params){
-					$.get( url, params, function(libros){
-						var carrito = "<table border='1'><tr><th>ISBN</th><th>Título</th><th>Autor</th><th>Precio</th><th>Páginas</th><th>Tema</th><th></th></tr>";
-						$.each(libros, function(indice, libro){
-							carrito += "<tr><td>"+libro.isbn+"</td><td>"+libro.titulo+"</td><td>"+libro.autor+"</td><td>"+libro.precio+"</td><td>"+libro.paginas+"</td><td>"+libro.temaDTO.tema+"</td><td><a href='#' onclick='quitar("+indice+")'>Quitar</a></td></tr>";
-						});
-						carrito += "</table>";
-						$("#carrito").html(carrito);}
-					)
-				}
-			</script>
 		</div>
+
+		<div id="tabla"></div>
+		<br><br>
+
+		<div id="carrito"></div>
+		
+		<div>
+			<a href="comprar">Finalizar compra</a>
+		</div>
+
+		<script type="text/javascript">
+			function getLibrosTema(){
+				$.get(	"getLibrosTema",
+					  	{"idTema":$("#listaTemas").val()},
+					  	function(temas){
+						  	var tabla = "<table border='1'><tr><th>ISBN</th><th>Título</th><th>Autor</th><th>Precio</th><th>Páginas</th><th>Tema</th><th></th></tr>";
+							$.each(temas, function(indice, libro){
+								tabla += "<tr><td>"+libro.isbn+"</td><td>"+libro.titulo+"</td><td>"+libro.autor+"</td><td>"+libro.precio+"</td><td>"+libro.paginas+"</td><td>"+libro.temaDTO.tema+"</td><td><a href='#' onclick='agregar("+libro.isbn+")'>Agregar</a></td></tr>";
+								// Ojo, que ahora libro no es un DTO y no hay mapeador, así que no se puede poner el tema, sólo el idTema, que lo que tiene libro.
+							});
+							tabla += "</table>";
+							$("#tabla").html(tabla);}
+				);
+			}
+								
+			function agregar(isbn){
+				var url = "agregar";
+				var params = {"isbn":isbn};
+				pintarCarrito(url, params);
+			}
+			
+			function quitar(pos){
+				var url = "quitar";
+				var params = {"posicion":pos};
+				pintarCarrito(url, params);
+			}
+			
+			function pintarCarrito(url, params){
+				$.get( url, params, function(libros){
+					var carrito = "<table border='1'><tr><th>ISBN</th><th>Título</th><th>Autor</th><th>Precio</th><th>Páginas</th><th>Tema</th><th></th></tr>";
+					$.each(libros, function(indice, libro){
+						carrito += "<tr><td>"+libro.isbn+"</td><td>"+libro.titulo+"</td><td>"+libro.autor+"</td><td>"+libro.precio+"</td><td>"+libro.paginas+"</td><td>"+libro.temaDTO.tema+"</td><td><a href='#' onclick='quitar("+indice+")'>Quitar</a></td></tr>";
+					});
+					carrito += "</table>";
+					$("#carrito").html(carrito);}
+				)
+			}
+		</script>
 	</body>
 </html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<title>Mis compras</title>
+		<style type="text/css">
+			body {
+				color: purple;
+			}
+			
+			h1 {
+				text-align: center;
+			}
+			
+			div {
+				width: 400px;
+				margin: 50px auto;
+				padding: 15px;
+				background-color: smocke;
+				border: 1px solid purple; input { display : block;
+				margin-bottom: 15px;
+			}
+			
+			input {
+				color: purple;
+				margin: 0 auto; 
+				display : block;
+				margin-bottom: 15px;
+				border: 1px solid purple;
+				padding: 7px;
+				display: block;
+			}}
+		</style>
+	</head>
+	<body>
+		<div>
+			<h1>Mis compras:</h1>
+			<h2>Compras de <span th:text = "${session.cliente.usuario}"></span></h2>
+			<center>
+				<table border="1">
+					<tr>
+						<th>Fecha compra</th>
+						<th>Libro</th>
+					</tr>
+					<tr th:each = "v:${comprascliente}">
+						<td th:text = "${v.fecha}"></td>
+						<td th:text = "${v.titulo}"></td>
+					</tr>
+				</table>
+			</center>
+		</div>
+	</body>
+</html>

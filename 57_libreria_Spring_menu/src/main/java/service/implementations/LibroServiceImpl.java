@@ -6,8 +6,8 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import DAO.LibroDAO;
-import DAO.TemaDAO;
+import dao.LibroDAO;
+import dao.TemaDAO;
 import dtos.LibroDTO;
 import dtos.TemaDTO;
 import model.Libro;
@@ -17,8 +17,6 @@ import service.mappers.Mapeador;
 @Service
 public class LibroServiceImpl implements LibroService {
 
-	/* Inyectamos ambos DAO y cada uno con su etiqueta	@Autowired
-	porque no vamos a hacer un service para Tema, se unifica aquí. */
 	@Autowired
 	LibroDAO libroDAO;
 	@Autowired
@@ -60,5 +58,4 @@ public class LibroServiceImpl implements LibroService {
 					  .map( a -> mapeador.temaEntityToDTO(a) )	// Devuelve un Optional de LibroDTO
 					  .orElse(null);
 	}
-
 }

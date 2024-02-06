@@ -12,7 +12,7 @@ import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-@EnableJpaRepositories(basePackages = "DAO",
+@EnableJpaRepositories(basePackages = "dao",
 					   entityManagerFactoryRef = "factory",
 					   transactionManagerRef = "txManager")			
 @EnableTransactionManagement

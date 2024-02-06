@@ -22,6 +22,6 @@ public class Tema {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idTema;
 	private String tema;
-	@OneToMany(mappedBy = "tema")	// nombre del campo de la entidad Libro
+	@OneToMany(mappedBy = "tema")	// nombre del campo en la entidad Libro
 	private List<Libro> libros;
 }

@@ -3,7 +3,7 @@ package service.implementations;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import DAO.ClienteDAO;
+import dao.ClienteDAO;
 import dtos.ClienteDTO;
 import model.Cliente;
 import service.interfaces.ClienteService;

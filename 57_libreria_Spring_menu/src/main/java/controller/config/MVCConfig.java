@@ -51,6 +51,7 @@ public class MVCConfig implements WebMvcConfigurer {
 	public void addViewControllers(ViewControllerRegistry registry) {
 		registry.addViewController("/").setViewName("login");
 		registry.addViewController("/toNuevo").setViewName("nuevo");
+		registry.addViewController("/toMenu").setViewName("menu");
 	}
 
 	@Override
