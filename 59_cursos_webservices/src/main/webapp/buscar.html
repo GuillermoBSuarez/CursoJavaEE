@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!-- Etiquetas para evitar la cache del navegador -->
+<meta http-equiv="Expires" content="0">
+<meta http-equiv="Last-Modified" content="0">
+<meta http-equiv="Cache-Control" content="no-cache, mustrevalidate">
+<meta http-equiv="Pragma" content="no-cache"> 
+<meta charset="UTF-8">
+<!-- API de JQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<title>Buscador de cursos</title>
+</head>
+<body>
+	<div id="RadioGroup">
+		Por precio<input type="radio" name="buscarPor" value="porPrecio"/><br>
+		Por duración<input type="radio" name="buscarPor" value="porDuracion"/>
+	</div>
+	<br><br><br>
+
+	<div id="divporPrecio" class="desc" hidden>
+		<input type="text" id="precioMax" placeholder="precio máximo">
+		<input type="button" id="btnPrecio" Value="Mostrar">
+	</div>
+
+	<div id="divporDuracion" class="desc" hidden>
+		<input type="text" id="duracionMin" placeholder="duración mínima">
+		<input type="text" id="duracionMax" placeholder="duración máxima">
+		<br>
+		<input type="button" id="btnDuracion" Value="Mostrar">
+	</div>
+
+	<div id="tabla">
+			
+	</div>
+
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$("input[name$='buscarPor']").click(function() {
+				var test = $(this).val();
+				$("div.desc").hide();
+				$("#div" + test).show();
+    		});
+		});
+
+		$("#btnPrecio").click(buscarPorPrecio);
+		$("#btnDuracion").click(buscarPorDuracion);
+
+		function buscarPorPrecio(){
+			var url = "FrontController";
+			var params = {"operation":"doBuscarPorPrecio", "precio":$("#precioMax").val()};
+			gestionarPeticion(url, params);
+		}
+
+		function buscarPorDuracion(){
+			var url = "FrontController";
+			var params = {"operation":"doBuscarPorDuracion", "duracionMin":$("#duracionMin").val(), "duracionMax":$("#duracionMax").val()};
+			gestionarPeticion(url, params);
+		}
+
+		function gestionarPeticion(url, params){
+			$.get(url, params, function(data){
+				alert(JSON.stringify(data));
+				
+				var tabla = "<table border='1'><tr><th>Nombre</th><th>Duración</th><th>Precio</th></tr>";
+					$.each(data, function(i, p){
+						tabla += "<tr><td>"+p.nombre+"</td><td>"+p.duracion+"</td><td>"+p.precio+"</td></tr>";
+					});
+					tabla += "</table>";
+					$("#tabla").html(tabla);});
+		}
+	</script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+CRUD
+----
+
+Servicios REST a exponer:
+
+- Buscar todos los cursos
+- Búsqueda de cursos por id
+- Búsqueda de cursos entre rango de precios
+- Alta de nuevo curso a partir del JSON, devolviendo lista de cursos que quedan
+- Eliminar curso por denominación, devolviendo el curso eliminado
+- Actualización de precios. Se recibe denominación y porcentaje, y se suben en ese porcentaje 
+el precio de ese curso
+
+JPA sí
+DTO no 
