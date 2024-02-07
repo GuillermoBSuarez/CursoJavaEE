@@ -11,5 +11,5 @@ public interface CursoService {
 	List<Curso> cursosPrecios(double precioMin, double precioMax);
 	List<Curso> agregarCurso(Curso curso);
 	Curso eliminarCurso(String denominacion);
-	void actualizarPrecio(String denominacion, double porcentaje);
+	void actualizarPrecio(int porcentaje, String denominacion);
 }

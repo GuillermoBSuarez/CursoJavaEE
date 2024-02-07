@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Buscador</title>
+
+<!-- API de JQuery -->
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+</head>
+<body>
+	<center>
+		<input type="text" id="tematica" placeholder="Temática">
+		<br><br>
+		<input type="button" id="buscar" value="Buscar">
+		<br><br>
+		<div id="tabla"></div>
+	</center>
+
+	<script type="text/javascript">
+		$("#buscar").click(buscarResultados);
+
+		function buscarResultados() {
+			let url = "http://localhost:8080/58_servicio_buscador_PRIMER_WEBSERVICE/buscar";
+			let params = {"tematica" : $("#tematica").val()};
+			$.get(url, params, procesar);	// alternativa a la función anónima que usamos otras veces
+		}
+		
+		function procesar(data){
+			let resultado = "<h1>Resultados de la búsqueda</h1>";
+			$.each(data, function(i, e) {		// each lleva dos parámetros: los datos que recibe y la función a aplicarle a cada uno.
+												// función recibe el elemento de cada interación (e) y su posición en la colección (i).
+				resultado += "<a href='" + e.url + "'>" + e.url + "</a><br>";
+				resultado += "<b>" + e.descripcion + "</b><br><hr>";
+			});
+			$("#tabla").html(resultado);
+		}
+	</script>
+</body>
+</html>

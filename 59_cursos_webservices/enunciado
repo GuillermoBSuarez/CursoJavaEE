@@ -13,3 +13,15 @@ el precio de ese curso
 
 JPA sí
 DTO no 
+
+
+JPARepository Java doc, para ver métodos heredados en los DAO.
+
+1º Model
+2º DAO
+3º Service.Interfaz
+4º Service.Implementación
+5º Service.Config
+6º Controller
+7º Controller.config
+8º config (AppConfig)

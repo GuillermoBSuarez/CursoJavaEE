@@ -1,0 +1,14 @@
+Servicio Learning
+
+Ofrece los recursos:
+
+- catálogo de formaciones
+- lista de formaciones por duración máxima
+- alta de formaciones
+
+Una formación tiene:
+- nombre
+- horas
+- precio
+
+Todo sobre el buscador de Cursos.

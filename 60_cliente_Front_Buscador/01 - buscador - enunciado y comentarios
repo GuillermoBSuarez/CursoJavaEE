@@ -1,0 +1,13 @@
+Cliente para trabajar contra el buscador del Ej. 58.
+Tendrá una caja para buscar temática, un botón y una tabla para los resultados
+que reciba.
+
+Creamos New > Static Web Project
+New > HTML
+
+Por ser estático, nada de Spring ni, por tanto, de Thymeleaf. Usaremos jQuery
+(ver línea en HTML).
+
+Para ejecutar, ejecutamos el 58 y abrimos la página de éste en un navegador. Da un error al buscar temática por la política CORS.
+Por seguridad, los servidores bloquean las llamadas javascript hechas desde un navegador. Hay que modificar el BuscadorController del Ej. 58,
+donde añadimos al comienzo la etiqueta @CrossOrigin("*"), que permite todos los orígenes.
