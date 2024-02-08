@@ -1,0 +1,16 @@
+Recursos a ofrecer:
+
+- Lista de continentes
+- Lista de países por continentes
+- Datos del país más poblado
+
+Modelo de datos:
+- Continente: string y ya
+- País:
+	String nombre
+	String continente
+	String capital
+	int población
+	String(url) bandera
+	
+Después, en el 63, la vista cliente donde manejamos este rest.
