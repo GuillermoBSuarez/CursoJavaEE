@@ -1,0 +1,17 @@
+Bean Coche:
+matrícula PK
+marca
+model
+kilometros
+precio
+fechaFabricación
+
+Trabajando contra un ArrayList
+
+Servicios:
+- Alta: no se admiten matrículas repetidas
+- Eliminar por matrícula y devuelve el Coche
+- Coches por Marca
+- Coches por precio máximo
+- Todos los coches
+- Actualización de coches, se recibe un Coche y se machaca por su matrícula, con los datos que vengan. 

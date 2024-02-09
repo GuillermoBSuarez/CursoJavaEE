@@ -1,0 +1,25 @@
+Crear proyecto: File > New > Other > Spring Boot > Spring Starter Project > Next >
+Service URL: de donde sacará la plantilla de creación de proyectos
+Type: cambiamos a Maven
+Package: cambiamos a init, es el paquete donde irá el lanzador, la clase Main.
+Next
+Available: buscamos “web” y seleccionamos Spring web. Luego buscamos y marcamos Lombok.
+Finish
+Tras terminar crea una estructura de archivos similar a las usadas hasta ahora, incluyendo en src/main/java un paquete init con una Application.java
+En src/main/resources está el Properties.
+
+Del 58 copiamos a este src/test/java los paquetes controller, model, implementations e interfaces. Y ya está la aplicación.
+
+Vamos a la clase application del init y añadimos las clases a escanear:
+@SpringBootApplication(scanBasePackages = {"controller", "service.implementations"})
+Pero si todos los paquetes van como subpaquetes de init (init.controller, init.model, etc.) ya no tenemos que poner el scanBasePackages,
+porque SpringBoot por defecto escanea el paquete init incluyendo todos sus subpaquetes. Es una práctica común.
+
+Para ejecutar, son microservicios, así que llevan su propio servidor. Clic derecho > Run As > Spring Boot App.
+En la consola informa de Tomcat arrancado en 8080 y con path '', configuración por defecto.
+En la barra de Herramientas > Boot Dashboard, vemos todos los microservicios arrancados en cada momento, cada uno con su menú contextual.
+
+La configuración por defecto se puede cambiar en el archivo src/main/resources > application.properties. En la web
+https://docs.spring.io/spring-boot/docs/current/reference/html/application-properties.html
+se pueden ver propiedades y configuraciones. Ejemplo, si buscamos "server.port" vemos que está en 8080. Modificamos nuestro archivo,
+reiniciamos el servidor en Boot Dashboard y cambiarán los mensajes anteriores.
