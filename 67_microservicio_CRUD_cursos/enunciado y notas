@@ -1,0 +1,23 @@
+Adaptación a microservicio del CRUD del ¿59?
+
+Además de lombok y Spring Web, importamos Spring DataJPA, que incluye Hibernate y Spring orm, y MySQL porque ese driver no lo incluye.
+
+Simplemente copiamos los packages controller, dao, model, implementation e interfaces, todos ellos renombrándolos para meterlos en init.
+y modificando código sólo para re-importar clases correctamente. Con eso debería funcionar... pero da excepciones, un error de contraseña
+incorrecta. Ojo con los espacios en el archivo de configuración, que no se ven. Era un espacio de más en la contraseña.
+
+Además, ya rulando, una llamada correcta -http://localhost:8080/cursos- devuelve un error 500:
+java.sql.SQLSyntaxErrorException: Unknown column 'c1_0.id_curso' in 'field list'
+
+Por convenio, la configuración por defecto de Spring Data JPA para Hibernate hace que los campos con mayúsculas intermedias,
+como idCurso, los transforma en id_curso. Cambiamos esa configuración en el application.properties con dos propiedades nuevas.
+
+Y tachín.
+
+Para control de errores y respuestas -que intentamos crear un curso con nombre repetico- creamos una clase de excepción:
+init.exceptions.CursoExistenteException. Ver en CursoServiceImpl. Al incluir la orden de lanzamiento de la excepción también
+hay que poner en la declaración de la función que lanza una excepción y, por tanto, también en la interfaz, o da error.
+La excepción la captura y gestiona el método agregarCurso del Controller, ver código.
+
+Además, se recomienda siempre devolver siempre ResponseEntity en todos los métodos del controller, así que lo añadimos en los demás
+métodos del mismo. 

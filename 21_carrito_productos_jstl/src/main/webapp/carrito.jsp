@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1" import="java.util.*,model.*"%>
+    pageEncoding="ISO-8859-1" import="java.util.*,init.model.*"%>
 <%@taglib uri="jakarta.tags.core" prefix="c" %>
 
 <!DOCTYPE html>

@@ -1,7 +1,7 @@
-<%@page import="model.Producto"%>
+<%@page import="init.model.Producto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"
-    import="model.Producto, java.util.List"%>
+    import="init.model.Producto, java.util.List"%>
 <%@taglib uri="jakarta.tags.core" prefix="c" %>    
 <!DOCTYPE html>
 <html>

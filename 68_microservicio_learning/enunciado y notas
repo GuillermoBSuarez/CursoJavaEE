@@ -1,0 +1,3 @@
+Modificado del 61 para funcionar como microservicio.
+
+Al desaparecer los archivos de configuración, incluimos la creación del RestClient en el Application.java.
