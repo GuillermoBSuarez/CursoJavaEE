@@ -1,0 +1,13 @@
+Adaptación del 65_canalcar_apirest, documentándolo según la presentación 04_servicios_web/15_documentacion_servicios_springdoc
+
+Para añadir dependencias necesarias (ver la presentación) con el asistente, clic derecho > Spring > Añadir starter.
+Aunque no nos sirve porque no salen los starters en el asistente, así que a pelo en el pom. Las copiamos de la presentación.
+Igualmente copiamos de la presentación las dos configuraciones necesarias para el application.properties.
+
+Error inesperado y desconocido. Por evitar coñazos, bajamos a la versión de Spring 3.1.5 en el pom.
+Al ejecutar, en http://localhost:8000/swagger-ui/index.html vemos la lista de servicios expuestos... se supone, porque no me ha
+funcionado por motivos oscuros y arcanos del misterio tenebroso.
+
+Sorpresa, funciona al cambiar a puerto 8080, pero parece algo aleatorio y problema de Eclipse, unas veces lee el properties y otras no.
+
+Para meter documentación, ver Controller en el apartado de alta y cochesmarca. Y ver resultado en Swagger.

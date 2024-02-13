@@ -1,0 +1,71 @@
+package init.service.implementation;
+
+import java.util.Arrays;
+import java.util.Base64;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.MediaType;
+import org.springframework.stereotype.Service;
+import org.springframework.web.client.HttpClientErrorException;
+import org.springframework.web.client.RestClient;
+
+import init.model.Formacion;
+import init.service.interfaces.FormacionService;
+
+@Service
+public class FormacionServiceImpl implements FormacionService {
+	
+	@Autowired
+	RestClient restClient;
+	
+	String urlBase = "http://localhost:8080/";		// Ver en application.properties del 67
+	
+	@Value("${app.user}")
+	String user;
+	@Value("${app.pass}")
+	String pass;
+
+	@Override
+	public List<Formacion> catalogo() {
+		return Arrays.asList(restClient.get()
+									   .uri(urlBase + "cursos")
+									   .retrieve()
+									   .body(Formacion[].class));
+	}
+
+	@Override
+	public List<Formacion> catalogoPorDuracionMax(int max) {
+		return catalogo().stream()
+						 .filter( f -> f.getHoras() <= max )
+						 .toList();
+	}
+
+	@Override
+	public void alta(Formacion formacion) {
+		try {
+			restClient.post()
+			  .uri(urlBase + "agregar")
+			  .contentType(MediaType.APPLICATION_JSON)
+			  .body(formacion)
+			  .header("Authorization", "Basic " + getBase64(user, pass))
+			  .retrieve()
+			  .toBodilessEntity();		// ResponseEntity<Void> por si el alta da error.
+		}
+		catch (HttpClientErrorException ex) {
+			System.out.println("************** VOLCADO DEL ERROR **************");
+			ex.printStackTrace();			
+		}
+	}
+	
+	private String getBase64(String user, String pass) {
+		String cadena = user + ":" + pass;
+		return Base64.getEncoder().encodeToString(cadena.getBytes());
+		/* El método estático getEncoder tiene un método encodeToString
+		que nos devolverá como String lo que le pasemos, que deberá ser
+		un array de bytes. De String a array de bytes para que devuelva
+		un String, jojojo. Hay una forma más simple de convertir a Base64
+		con una librería de Apache, pero no "queremos" entrar ahí. */
+	}
+}

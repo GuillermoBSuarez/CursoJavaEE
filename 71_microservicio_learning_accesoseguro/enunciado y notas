@@ -1,0 +1,13 @@
+Modificado del 68 para funcionar como microservicio securizado contra el 70
+
+Debemos incluir en el header las credenciales securizadas
+
+En el implementation añadimos .header("Authorization", "Basic " + getBase64(user, pass)) en el método de alta. El método getBase64
+también lo añadimos al final. Y al comienzo de la clase los strings de user y pass "a pelo".
+Ver notas en la clase.
+
+Al ejecutar, ojo a los puertos de server y client, tipos de peticiones, tipo de archivo (json), etc.
+
+Cambiamos los user y pass "a pelo" y los ponemos en el properties y las inyectamos con @Value. Ver la clase de Impl.
+Igual podríamos hacer con la url, inventándonos una propiedad en el properties -como hemos hecho con user y pass-
+e inyectándola luego con @Value.

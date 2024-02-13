@@ -1,0 +1,7 @@
+Microservicio de libros (BD librería)
+
+Servicios a exponer y aseguramiento:
+- catálogo de libros			- acceso libre
+- lista de temáticas			- acceso libre
+- buscador de libro por ISBN	- sólo los autenticados
+- alta de nuevos libros			- sólo administrador

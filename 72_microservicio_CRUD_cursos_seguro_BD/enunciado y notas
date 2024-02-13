@@ -1,0 +1,4 @@
+Adaptación del 70 para que coja los users de una BD.
+
+Ver SecurityConfig, donde tenemos que crear un método JdbcUserDetailsManager
+para acceder a esa BD.

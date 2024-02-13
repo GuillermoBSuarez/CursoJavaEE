@@ -1,0 +1,12 @@
+Adaptación del 67 asegurándolo (securizándolo) según la presentación 11.
+
+Añadimos los starters. Clic derecho > Spring > Add starters > Spring Security
+
+Creamos la nueva clase (ver presentación) clase de seguridad y la llamamos, por ejemplo, SecurityConfig.
+Ver en el código las etiquetas necesarias. Añadimos los métodos necesarios (ver presentación).
+
+Ejecutando con esa clase, la llamada de "cursos" funciona sin autenticarse, pero la de cursos por 
+rango de precios, por ejemplo, devuelve un error de Unauthorized con error 401.
+
+Para enviar credenciales desde Postman hay una pestaña Authorization. En Basic > Basic Auth y damos users y pass
+de cada caso contemplado en la clase.
