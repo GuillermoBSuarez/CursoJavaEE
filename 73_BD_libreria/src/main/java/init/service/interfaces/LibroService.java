@@ -1,4 +1,4 @@
-package init.interfaces;
+package init.service.interfaces;
 
 import java.util.List;
 
@@ -8,5 +8,5 @@ public interface LibroService {
 	List<Libro> libros();
 	List<String> tematicas();
 	Libro libro(int isbn);
-	void alta(Libro libro);
+	boolean alta(Libro libro);
 }

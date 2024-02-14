@@ -1,0 +1,15 @@
+Microservicio para trabajar contra el 73_BD_libreria
+
+Servicios a exponer y aseguramiento:
+- lista de temáticas				- acceso libre
+- buscador de libro por temática	- acceso libre
+
+En éste, que es cliente, no se mete el starter security, que es sólo para las apirest o servidores.
+
+Ojo, en el Implementation a la configuración de inyección de user y pass y su inclusión en el header,
+el método de codificiación, la configuración de user y pass en el properties, etc.
+
+El ejecutar el server y este cliente con user y pass correctos (como user1/user1) ambos métodos funcionan.
+Pero el de libros por temática requiere estar autenticado, así que si cambiarmos en el properties el user
+y pass por otros no reconocidos por el server o los dejamos en blanco, el server devuelve un 401 y
+este cliente a su vez nos da un error 500.
