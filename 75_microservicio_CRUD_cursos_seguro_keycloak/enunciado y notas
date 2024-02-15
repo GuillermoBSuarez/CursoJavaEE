@@ -1,0 +1,6 @@
+Adaptación del 72 para incluir seguridad con OAuth y Keycloak.
+
+Ver presentación 14:
+- Incluir dependencia OAuth Resource Server.
+- Incluir conversor de Keycloak
+- Spring Security (SecurityConfig) ya no busca ni comprueba users y pass.

@@ -1,0 +1,10 @@
+Microservicio de libros, versión del 73
+
+Cambiamos el aseguramiento de Base64 por uno de tokens con Keycloak.
+
+1. Incluimos la dependencia OAuth Resource Server.
+2. Añadimos la clase conversor de jwt a token java, JwtAuthConverter.
+3. Añadimos la propiedad keycloak.clientId=Validador en el properties.
+4. Añadimos las propiedades del origen de jwt en el properties.
+5. En el SecurityConfig inyectamos el converter.
+6. En el SecurityConfig cambiamos el aseguramiento de httpBasic a OAuth2.

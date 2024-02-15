@@ -1,0 +1,8 @@
+Modificado del 71. Cliente para trabajar con el microservicio del 75
+
+Funciona:
+- Lanza una petición al Keycloak y pide token con los datos adecuados.
+- Luego la envía al server junto con la petición.
+
+Lo hace la lógica de negocio, es decir, el Impl. Ver cambios en inyección de variables,
+método de alta (el que exigía identificación) y el método getToken que sustituye a getBase.

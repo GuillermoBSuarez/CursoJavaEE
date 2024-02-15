@@ -1,0 +1,13 @@
+Modificado del 74. Cliente para trabajar contra el 77.
+
+Asegurado con peticiones con token. Servicios a exponer y aseguramiento:
+- lista de libros					- acceso autenticado
+- buscador de libro por temática	- acceso libre
+
+1. Modificamos interfaz, implementación y controller para que el método de libros por temáticas sea
+de libros sin más, todos.
+2. Creamos la clase de TokenResponse
+3. En properties incluimos las variables de acceso al validador.
+4. Inyectamos dichas variables en la implementación.
+5. En la implementación añadimos el método getToken y el init.
+6. En el método libros cambiamos la configuración del header y el try-catch.
