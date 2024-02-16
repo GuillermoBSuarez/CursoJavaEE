@@ -1,0 +1,5 @@
+Modificado del 77 para aplicar servidor Eureka del 79. Se registrará en él.
+
+1. Añadir starter de Eureka Discovery Client. 
+2. En el application.properties > clic derecho > convertir a yml
+3. Añadimos la configuración Spring del Eureka y el nombre de la app.

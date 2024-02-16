@@ -1,4 +1,4 @@
- bvModificado del 74. Cliente para trabajar contra el 77.
+Modificado del 74. Cliente para trabajar contra el 77.
 
 Asegurado con peticiones con token. Servicios a exponer y aseguramiento:
 - lista de libros					- acceso autenticado
@@ -11,3 +11,15 @@ de libros sin más, todos.
 4. Inyectamos dichas variables en la implementación.
 5. En la implementación añadimos el método getToken y el init.
 6. En el método libros cambiamos la configuración del header y el try-catch.
+
+
+Para probar los métodos en Postman, en ninguno hace falta Auth, body, etc.
+
+1. Probar el método securizado en http://localhost:9100/libros/{temática}
+	- Petición GET
+	Esta función librosTemática llama a la libros() del 77, que la que está SECURIZADA
+	y exige un usuario autenticado. Es el 77 quien pide un token y hace el proceso de seguridad.
+	A ojos de éste, todo es trasparente.
+
+2. Probar el abierto en http://localhost:9100/tematicas
+	- Petición GET

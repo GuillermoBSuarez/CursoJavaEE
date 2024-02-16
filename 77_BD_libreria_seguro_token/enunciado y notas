@@ -8,3 +8,25 @@ Cambiamos el aseguramiento de Base64 por uno de tokens con Keycloak.
 4. Añadimos las propiedades del origen de jwt en el properties.
 5. En el SecurityConfig inyectamos el converter.
 6. En el SecurityConfig cambiamos el aseguramiento de httpBasic a OAuth2.
+
+
+0. Conseguir el Token.
+	- Arrancar el Keycloak en C:\Users\tarde\Documents\keycloak-23.0.6\bin, abrimos consola y kc start -dev
+	- En Postman, en http://localhost:8080/realms/UsuariosCursoRealm/protocol/openid-connect/token
+	- Petición Post.
+	- Body > x-www-form-urlencoded > Params:
+		username: admin
+		password: admin
+		client_id: Validador
+		grant_type: password
+	- Send y devuelve el json. El primer elemento será el access-token.
+
+Para probar los métodos en Postman:
+
+1. Probar el método securizado en http://localhost:9000/libros
+	- Petición GET
+	- Authorization: Bearer Token y añadir el token.
+
+2. Probar el abierto en http://localhost:9000/tematicas
+	- Petición GET
+	- Authorization: No Auth

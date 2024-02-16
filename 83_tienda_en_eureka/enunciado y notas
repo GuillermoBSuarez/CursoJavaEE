@@ -1,0 +1,31 @@
+Modificado del 78 para utilizar el servidor Eureka para conectar al 82.
+
+1. Añadir starter de Eureka Discovery Client
+2. application.properties > clic derecho > convertir a yml
+3. En Application.java cambiamos el método de creación del RestClient
+   por el RestClient.builder con la etiqueta @LoadBalanced y el nuevo getClient.
+4. En la implementación cambiamos la urlBase por el nombre de la app que configuramos
+   en el application.yml del server (82).
+5. En el yml añadimos la variable Spring del nombre de app (ésta) y la de Eureka,
+   con la configuración de no registrarse porque éste no lo va a llamar nadie.
+   Tampoco es imprescindible, por tanto, que tenga nombre, pero sí recomendable.
+   
+ERROR: al ejecutarse se activa Ribbon, que usa el único RestClient que hemos creado. Así,
+interpreta cualquier dirección que le demos como un identificador que debe traducir en
+Eureka, pero el localhost donde tenemos el Keycloak no está en Eureka sino que es tal cual,
+por tanto nunca lo encuentra y no termina de arrancar. Debemos crear otro RestClient.
+
+Ver cómo queda Application.java. Añadimos un método para crear un RestClienbt sin Ribbon.
+Y en la implementación inyectamos ambas con una nueva etiqueta que las distingue, @Qualified.
+En el código llamamos a un RestClient u otro para cada necesidad.
+
+Para probar los métodos en Postman, en ninguno hace falta Auth, body, etc.
+
+1. Probar el método securizado en http://localhost:9100/libros/{temática}
+	- Petición GET
+	Esta función librosTemática llama a la libros() del 77, que la que está SECURIZADA
+	y exige un usuario autenticado. Es el 77 quien pide un token y hace el proceso de seguridad.
+	A ojos de éste, todo es trasparente.
+
+2. Probar el abierto en http://localhost:9100/tematicas
+	- Petición GET

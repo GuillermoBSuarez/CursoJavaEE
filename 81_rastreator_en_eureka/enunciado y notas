@@ -1,0 +1,15 @@
+Microservicio que trabaja contra el APIrest del 65.
+
+JavaBean Vehículo, igual que el coche del 65 más un campo Tipo que define el tipo de vehículo.
+En este caso, todos serán "coche".
+
+Expondrá dos servicios:
+- búsqueda por rango de kms
+- búsqueda por precio máximo
+
+En application.properties configuramos éste en el puerto 7000 y el anterior en el 8000.
+
+Ojo, nota en Application.java:
+/* Esta es la única clase de configuración en Spring Boot, que unifica todas las que había en Spring.
+	Al arrancar daba un error porque no encontraba el objeto RestClient, así que hay que crear aquí ese método,
+	que antes estaba en service.config */

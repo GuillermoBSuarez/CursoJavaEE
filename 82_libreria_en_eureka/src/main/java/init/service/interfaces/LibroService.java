@@ -5,6 +5,8 @@ import java.util.List;
 import init.model.Libro;
 
 public interface LibroService {
+	List<Libro> libros();
 	List<String> tematicas();
-	List<Libro> librosTematica(String tematica);
+	Libro libro(int isbn);
+	boolean alta(Libro libro);
 }

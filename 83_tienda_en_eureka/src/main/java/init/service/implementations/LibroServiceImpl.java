@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
@@ -19,8 +20,13 @@ import jakarta.annotation.PostConstruct;
 @Service
 public class LibroServiceImpl implements LibroService {
 
-	@Autowired
-	RestClient restClient;
+	@Autowired()
+	@Qualifier("RibbonClient")
+	RestClient restRibbonClient;
+	
+	@Autowired()
+	@Qualifier("NotRibbonClient")
+	RestClient restNotRibbonClient;
 	
 	@Value("${app.urlAuth}")
 	String urlAuth;
@@ -33,7 +39,7 @@ public class LibroServiceImpl implements LibroService {
 	@Value("${app.grant_type}")
 	String grant_type;
 	
-	String urlBase = "http://localhost:9000/";
+	String urlBase = "http://libreria/";
 	
 	String token;
 	
@@ -44,23 +50,20 @@ public class LibroServiceImpl implements LibroService {
 	
 	@Override
 	public List<String> tematicas() {
-		return Arrays.asList(restClient.get()
-									   .uri(urlBase + "tematicas")
-									   .retrieve()
-									   .body(String[].class));
+		return Arrays.asList(restRibbonClient.get()		// RestClient con Ribbon: va a Eureka
+									 		 .uri(urlBase + "tematicas")
+									 		 .retrieve()
+									 		 .body(String[].class));
 	}
 	
 	@Override
 	public List<Libro> librosTematica(String tematica) {
 		try {
-			return Arrays.asList(restClient.get()
-									   	   .uri(urlBase + "libros")
-	   	   /* Ojo, llamamos al método libros() del 77, no a un librosPorTema.
-	   	   Ese libros() es el que está SECURIZADO y exige un usuario autenticado,
-	   	   y será el 77 el que pida un token y haga el proceso de seguridad. */
-									   	   .header("Authorization", "Bearer " + token)
-									   	   .retrieve()
-									   	   .body(Libro[].class))
+			return Arrays.asList(restRibbonClient.get()	// RestClient con Ribbon: va a Eureka
+									   	   		 .uri(urlBase + "libros")
+									   	   		 .header("Authorization", "Bearer " + token)
+									   	   		 .retrieve()
+									   	   		 .body(Libro[].class))
 						 .stream()
 						 .filter(b->b.getTematica().equals(tematica))
 						 .toList();
@@ -77,12 +80,12 @@ public class LibroServiceImpl implements LibroService {
 		params.add("password", password);
 		params.add("grant_type", grant_type);
 
-		return restClient.post()
-						 .uri(urlAuth)
-						 .contentType(MediaType.APPLICATION_FORM_URLENCODED)
-						 .body(params)
-						 .retrieve()
-						 .body(TokenResponse.class)
-						 .getAccess_token();
+		return restNotRibbonClient.post()			// RestClient sin Ribbon: no va a Eureka
+						 		  .uri(urlAuth)
+						 		  .contentType(MediaType.APPLICATION_FORM_URLENCODED)
+						 		  .body(params)
+						 		  .retrieve()
+						 		  .body(TokenResponse.class)
+						 		  .getAccess_token();
 	}
 }
