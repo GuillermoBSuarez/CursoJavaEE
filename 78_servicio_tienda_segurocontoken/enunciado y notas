@@ -1,4 +1,4 @@
-Modificado del 74. Cliente para trabajar contra el 77.
+ bvModificado del 74. Cliente para trabajar contra el 77.
 
 Asegurado con peticiones con token. Servicios a exponer y aseguramiento:
 - lista de libros					- acceso autenticado
