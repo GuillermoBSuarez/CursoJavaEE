@@ -1,0 +1,24 @@
+Servicio Pedidos, para trabajar contra Productos. Expone:
+
+- Recurso que recibe petición POST con datos de un Pedido y lo graba. Además, llama a los recursos del servicio de
+Productos para actualizar el stock.
+- Recurso que recibe petición GET y devuelve todos los pedidos.
+
+De momento, sin securización.
+
+
+1. File > New > Other > Spring Boot > Spring Starter Project
+2. Añadimos starters de Spring Web, Lombok, MySQL Driver, Spring Data JPA y Eureka Discovery Client. Este último no es necesario porque no tiene
+por qué registrarse en Eureka, nadie le va a llamar, pero en un futuro quizá lo hagamos. 
+3. application.properties > clic derecho > convertir a yml y añadimos:
+   - configuración Spring:
+      - nombre de la app,
+   - puerto
+   - servidor Eureka
+4. Application.java > añadir @EnableJpaRepositories
+5. Creamos el javabean Pedido con su referencia a la tabla pedidos
+6. Creamos la interfaz DAO, donde según el enunciado no hace falta ningún método más que los que heredamos de JpaRepository.
+7. Creamos la interfaz con los métodos necesarios.
+8. Creamos la implementación de la interfaz.
+9. Creamos el controller
+10. Arrancar el Eureka para las pruebas. ¡El servidor, no el Keycloak! El servidor Eureka que está en un proyecto, idiota!

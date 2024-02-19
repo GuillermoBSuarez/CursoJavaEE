@@ -1,0 +1,24 @@
+Servicio Productos. Expone:
+
+- Recurso recibe una petición get y devuelve la lista de productos.
+- Recurso que recibe petición put con un código de producto y unidades compradas y actualiza el stock del mismo.
+- Recurso que recibe petición get con un código de producto y devuelve su precio unitario.
+
+De momento, sin securización.
+
+
+1. File > New > Other > Spring Boot > Spring Starter Project
+2. Añadimos starters de Spring Web, Lombok, MySQL Driver, Spring Data JPA, Eureka Discovery Client. 
+3. application.properties > clic derecho > convertir a yml y añadimos:
+   - configuración Spring:
+      - nombre de la app,
+      - conexión a la BD (datasource),
+      - jpa.hibernate
+   - servidor Eureka
+4. Application.java > añadir @EnableJpaRepositories
+5. Creamos el javabean Producto con su referencia a la tabla productos
+6. Creamos la interfaz DAO, donde según el enunciado no hace falta ningún método más que los que heredamos de JpaRepository.
+7. Creamos la interfaz con los métodos necesarios.
+8. Creamos la implementación de la interfaz.
+9. Creamos el controller
+10. Arrancar el Eureka para las pruebas. ¡El servidor, no el Keycloak! El servidor Eureka que está en un proyecto, idiota!
