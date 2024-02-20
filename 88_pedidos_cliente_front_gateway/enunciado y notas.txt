@@ -1,0 +1,5 @@
+Modificado del 86 para añadir la redirección del gateway.
+
+1. En el nuevopedido cambiamos las url para incluir el puerto del Ej. 87
+   y añadir /sproductos/, que será sustituido por la configuración del gateway del Ej. 87.
+2. En pedidos hacemos lo mismo.

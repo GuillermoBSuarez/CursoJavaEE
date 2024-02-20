@@ -1,0 +1,27 @@
+server:
+  port: 7000
+spring:
+  application:
+    name: servidor-gateway   
+  cloud: 
+    gateway:
+      default-filters:
+        - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+              allowedOrigins: "*"
+              allowedMethods: "*"
+              allowedHeaders: "*" 
+      routes:
+      - id: servPaises #Id de la ruta 
+        uri: lb://servicio-paises #lb=loadBalanced, esto activa Ribbon
+        predicates:
+          - Path=/spaises/** #Cuando Gateway detecte que en la peticion URL venga este path, enrutara la peticion hacia el servicio indicado en la propiedad "uri" (lb://servicio-productos)
+        filters:
+          - RewritePath=/spaises/*, / #Indica que a la url de "uri" le sustituye /sproductos/ por /, y deja el resto de la petición        
+eureka:
+  client:
+    register-with-eureka: false
+    service-url:
+      defaultZone: http://localhost:8761/eureka

@@ -1,0 +1,4 @@
+1. File > New > Other > Spring Boot > Spring Starter Project
+2. Eureka Discovery Client y REACTIVE Gateway.
+3. Convertir el application.properties a yml.
+4. En el yml, añadimos la configuración de Gateway.

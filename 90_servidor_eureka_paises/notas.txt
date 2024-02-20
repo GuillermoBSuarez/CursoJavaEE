@@ -1,0 +1,4 @@
+Sólo hay que añadir el starter de EurekaServer
+y en application.java la anotación de @EnableEurekaServer
+
+Copiamos las properties del 79

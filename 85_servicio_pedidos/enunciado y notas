@@ -13,6 +13,8 @@ por qué registrarse en Eureka, nadie le va a llamar, pero en un futuro quizá l
 3. application.properties > clic derecho > convertir a yml y añadimos:
    - configuración Spring:
       - nombre de la app,
+      - conexión a la BD (datasource),
+      - jpa.hibernate
    - puerto
    - servidor Eureka
 4. Application.java > añadir @EnableJpaRepositories

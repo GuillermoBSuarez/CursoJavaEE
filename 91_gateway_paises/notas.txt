@@ -1,0 +1,4 @@
+Sólo hay que importarle los starters de Discovery Client y
+Gateway Reactive - SIN MVC
+
+Copiamos la configuración del 87 y modificamos datos

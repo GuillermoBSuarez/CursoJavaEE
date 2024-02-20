@@ -34,7 +34,7 @@ public class PedidoServiceImpl implements PedidoService {
 		pedido.setFechaPedido(new Date());  
 		dao.save(pedido);
 
-		rc.get()
+		rc.put()			// Ojo, PUT, que la petición que espera el servicio Productos
 		  .uri(urlBase +
 			   "actualizarStock/" + 
 			   pedido.getCodigoProducto() + "/" + 

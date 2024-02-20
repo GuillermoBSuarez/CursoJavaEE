@@ -1,0 +1,12 @@
+1. File > New > Other > Spring Boot > Spring Starter Project
+2. Añadimos starters de Spring Web, Lombok y Eureka Discovery Client.
+3. application.properties > clic derecho > convertir a yml y añadimos:
+   - configuración Spring:
+      - nombre de la app,
+   - servidor Eureka
+4. Model, interfac, implementación y controller son los mismos que los del Ej. 62,
+   con ligeras variaciones para hacerlo con Spring Boot en vez de RestAPI.
+5. Creamos el servidor Eureka copipegando el 79 al 90
+6. Creamos el gateway en el 91
+7. Migramos el cliente del 63 al 92_cliente_paises_eureka_gateway
+10. Arrancar el Eureka para las pruebas. ¡El servidor, no el Keycloak! El servidor Eureka que está en un proyecto, idiota!
