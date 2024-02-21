@@ -1,0 +1,12 @@
+server:
+  port: 8888
+spring:
+  profiles:
+    active:
+    - native    #esto indica que el perfil no está fuera (en GitHub) sino local
+  cloud:
+    config:
+      server:
+        native:
+          search-locations:
+          - file:///C:\Users\tarde\Documents\CursoJavaEEConfiguracionMicroservicios

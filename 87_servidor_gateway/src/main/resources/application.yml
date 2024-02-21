@@ -14,18 +14,30 @@ spring:
               allowedMethods: "*"
               allowedHeaders: "*" 
       routes:
-      - id: servProductos #Id de la ruta 
-        uri: lb://servicio-productos #lb=loadBalanced, esto activa Ribbon
+      - id: servProductos #Id de la ruta, QUE NO SE USA EN NINGÚN SITIO
+        uri: lb://productos #lb=loadBalanced, esto activa Ribbon
         predicates:
           - Path=/sproductos/** #Cuando Gateway detecte que en la peticion URL venga este path, enrutara la peticion hacia el servicio indicado en la propiedad "uri" (lb://servicio-productos)
         filters:
           - RewritePath=/sproductos/*, / #Indica que a la url de "uri" le sustituye /sproductos/ por /, y deja el resto de la petición        
       - id: servPedidos
-        uri: lb://servicio-pedidos 
+        uri: lb://pedidos 
         predicates:
           - Path=/spedidos/**
         filters:
-          - RewritePath=/spedidos/*, /  
+          - RewritePath=/spedidos/*, /
+      - id: libreria
+        uri: lb://libreria 
+        predicates:
+          - Path=/slibreria/**
+        filters:
+          - RewritePath=/slibreria/*, /  
+      - id: tienda
+        uri: lb://tienda 
+        predicates:
+          - Path=/stienda/**
+        filters:
+          - RewritePath=/stienda/*, /  
 eureka:
   client:
     register-with-eureka: false

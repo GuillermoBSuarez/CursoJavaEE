@@ -1,0 +1,20 @@
+Modificado del 83 para centralizar la configuración en GitHub
+
+1. Añadir starter de Spring Cloud Config - Config Client
+2. Anotar la clase main con @EnableConfigServer
+3. En GitHub > repositorio CursoJavaEEConfiguracionMicroservicios creamos los yml de librería y tienda,
+   donde llevamos toda la configuración salvo
+   spring:application:name: librería/tienda
+   y spring:config:import: - optional:configserver:http://localhost:8888 #Localización Spring Cloud Config
+   En GitHub se renombran con el nombre del servicio.
+4. Eliminamos en el yml de GitHub la exclusión de registrarse en Eureka de la tienda, porque ahora
+   queremos que Postman entre a través de gateway.
+5. En el yml del gateway añadimos el enrutamiento.
+6. Usamos servidor Eureka de Ej. 79
+		  servidor gateway de Ej. 87
+		  servidor configuración de Ej. 93
+   Arrancamos también el Keycloak
+   
+   Por por Gateway, las direcciones a probar serán:
+   http://localhost:9000/stienda/tematicas - acceso libre GET
+   http://localhost:9000/stienda/libros/web - acceso securizado GET ya automatizado
