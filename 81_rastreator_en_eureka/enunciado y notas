@@ -13,3 +13,8 @@ Ojo, nota en Application.java:
 /* Esta es la única clase de configuración en Spring Boot, que unifica todas las que había en Spring.
 	Al arrancar daba un error porque no encontraba el objeto RestClient, así que hay que crear aquí ese método,
 	que antes estaba en service.config */
+	
+
+	
+Tiempo después, modificamos el application.yml para meter el programa en un Docker.
+Quitamos los localhost y los cambiamos por variables de entorno. Ver grabación del 22/02/2024

@@ -21,3 +21,7 @@ La excepción la captura y gestiona el método agregarCurso del Controller, ver 
 
 Además, se recomienda siempre devolver siempre ResponseEntity en todos los métodos del controller, así que lo añadimos en los demás
 métodos del mismo. 
+
+
+Mucho después creamos otros properties (dev y prod) para usar este ejercicio para crear contenedores Docker,
+donde, obviamente, no podemos usar localhost para la BD.
