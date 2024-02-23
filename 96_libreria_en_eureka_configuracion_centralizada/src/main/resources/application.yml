@@ -3,4 +3,4 @@ spring:
     name: libreria
   config:
     import:
-    - optional:configserver:http://localhost:8888 #Localización Spring Cloud Config
+    - optional:configserver:http://${HOST_CONFIG}:${PORT_CONFIG} #Localización Spring Cloud Config
