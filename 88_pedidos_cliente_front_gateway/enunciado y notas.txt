@@ -1,4 +1,5 @@
 Modificado del 86 para añadir la redirección del gateway.
+Necesita Eureka(79), Gateway(87), productos(84) y pedidos(85).
 
 1. En el nuevopedido cambiamos las url para incluir el puerto del Ej. 87
    y añadir /sproductos/, que será sustituido por la configuración del gateway del Ej. 87.
