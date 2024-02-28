@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import init.dao.CursoDAO;
 import init.exceptions.CursoExistenteException;
 import init.model.Curso;
-import service.interfaces.CursoService;
+import init.service.interfaces.CursoService;
 
 @Service
 public class CursoServiceImpl implements CursoService{

@@ -11,9 +11,13 @@ import lombok.NoArgsConstructor;
 @Data
 public class Pais {
 	
-	@JsonAlias(value = "name")		private String nombre;
-	@JsonAlias(value = "region")	private String continente;
-	/* Se llama igual en el json*/	private String capital;
-	@JsonAlias(value = "population")private long poblacion;
-	@JsonAlias(value = "flag")		private String bandera;
+	@JsonAlias(value = "name")
+	private String nombre;
+	@JsonAlias(value = "region")
+	private String continente;
+	private String capital;		// Se llama igual en el json
+	@JsonAlias(value = "population")
+	private long poblacion;
+	@JsonAlias(value = "flag")
+	private String bandera;
 }

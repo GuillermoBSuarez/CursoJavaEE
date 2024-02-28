@@ -8,5 +8,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Data
 public class Resultado {
-	private String url, tematica, descripcion;
+	private String url;
+	private String tematica;
+	private String descripcion;
 }

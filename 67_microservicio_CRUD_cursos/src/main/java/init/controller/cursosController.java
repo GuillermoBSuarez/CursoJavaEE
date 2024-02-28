@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import init.exceptions.CursoExistenteException;
 import init.model.Curso;
-import service.interfaces.CursoService;
+import init.service.interfaces.CursoService;
 
 @RestController
 public class cursosController {
