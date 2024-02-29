@@ -31,9 +31,9 @@ public class SecurityConfig {
 	public SecurityFilterChain filter(HttpSecurity http) throws Exception{
 		http.csrf(c->c.disable())
 		.authorizeHttpRequests(
-				aut -> aut.requestMatchers(HttpMethod.GET, "/libros/*").authenticated()
-						  .requestMatchers(HttpMethod.POST, "/alta").hasRole("ADMINS")
-						  .anyRequest().permitAll()
+				aut -> // aut.requestMatchers(HttpMethod.GET, "/libros/*").authenticated()
+						  // .requestMatchers(HttpMethod.POST, "/alta").hasRole("ADMINS")
+						  aut.anyRequest().permitAll()
 				)
 		.httpBasic(Customizer.withDefaults());
 		return http.build();
