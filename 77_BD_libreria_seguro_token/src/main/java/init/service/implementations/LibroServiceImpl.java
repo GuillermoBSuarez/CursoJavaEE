@@ -23,12 +23,7 @@ public class LibroServiceImpl implements LibroService {
 	
 	@Override
 	public List<String> tematicas() {
-		/* Alternativa para no tener que cargar toda la BD. Ver en LibroDAO.
-		return dao.findTematicas(); */
-		
-		return dao.findAll().stream()
-			   	  .map( l -> l.getTematica() )
-			   	  .distinct().toList();
+		return dao.findTematicas();
 	}
 	
 	@Override

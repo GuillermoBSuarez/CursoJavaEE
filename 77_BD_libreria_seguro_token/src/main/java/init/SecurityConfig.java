@@ -20,19 +20,6 @@ public class SecurityConfig {
 	JwtAuthConverter jwtAuthConverter;
 	
 	@Bean
-	public JdbcUserDetailsManager users() {
-		DriverManagerDataSource ds=new DriverManagerDataSource();
-		ds.setDriverClassName("com.mysql.cj.jdbc.Driver");
-		ds.setUrl("jdbc:mysql://localhost:3306/springsecurity");
-		ds.setUsername("root");
-		ds.setPassword("root");
-		JdbcUserDetailsManager jdbc=new JdbcUserDetailsManager(ds);
-		jdbc.setUsersByUsernameQuery("select user, pwd, enabled from users where user=?");
-		jdbc.setAuthoritiesByUsernameQuery("select user, rol from roles where user=?");
-		return jdbc;
-	}
-		
-	@Bean
 	public SecurityFilterChain filter(HttpSecurity http) throws Exception{
 		http.csrf(c->c.disable())
 			.authorizeHttpRequests(
