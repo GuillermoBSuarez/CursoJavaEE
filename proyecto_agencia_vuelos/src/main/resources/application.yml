@@ -1,5 +1,5 @@
 server:
-  port: 8001
+  port: 8002
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -11,3 +11,12 @@ spring:
       naming:
         implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:8080/realms/UsuariosCursoRealm
+          jwk-set-uri: ${spring.security.oauth2.resourceserver.jwt.issuer-uri}/protocol/openid-connect/certs
+
+keycloak:
+  clientId: Validador

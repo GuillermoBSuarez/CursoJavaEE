@@ -63,7 +63,7 @@ public class cursosController {
 	}
 	
 	@PutMapping(value = "actualizarPrecio")
-	public void actualizarPrecio(@RequestParam("porcentaje") int porcentaje, @RequestParam("denominacion") String denomonacion) {
-		service.actualizarPrecio(porcentaje, denomonacion);
+	public void actualizarPrecio(@RequestParam("porcentaje") int porcentaje, @RequestParam("denominacion") String denominacion) {
+		service.actualizarPrecio(porcentaje, denominacion);
 	}	
 }
