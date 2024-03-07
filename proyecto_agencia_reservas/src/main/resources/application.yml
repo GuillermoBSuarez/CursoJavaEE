@@ -1,0 +1,19 @@
+app:
+  client_id: Validador
+  grant_type: password
+  password: admin
+  urlAuth: http://localhost:8080/realms/UsuariosCursoRealm/protocol/openid-connect/token
+  username: admin
+server:
+  port: 8003
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    password: root
+    url: jdbc:mysql://localhost:3306/viajes
+    username: root
+  jpa:
+    hibernate:
+      naming:
+        implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl

@@ -1,9 +1,11 @@
 package init.model;
 
+import java.util.List;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -13,14 +15,14 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 @Entity
-@Table(name = "hoteles")
-public class Hotel {
+@Table(name = "vuelos")
+public class Vuelo {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer idHotel;
-	private String nombre;
-	private Integer categoria;
+	private Integer idVuelo;
+	private String company;
+	private String fecha;
 	private double precio;
-	private boolean disponible;
-	private String localizacion;
+	private int plazas;
+	private String destino;
 }
