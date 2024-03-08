@@ -14,9 +14,6 @@ import init.service.interfaces.ReservaService;
 @Component
 public class Mapper {
 
-	@Autowired
-	ReservaService service;
-	
 	public HotelDTO hotelEntityToDTO(Hotel hotel) {
 		return new HotelDTO(hotel.getIdHotel(),
 							hotel.getNombre(),

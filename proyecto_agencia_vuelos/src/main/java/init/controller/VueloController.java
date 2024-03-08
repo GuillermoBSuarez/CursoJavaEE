@@ -35,9 +35,9 @@ public class VueloController {
 		return new ResponseEntity<List<Vuelo>>(service.vuelos(destino, plazas), HttpStatus.OK);
 	}
 	
-	@PutMapping(value = "vueloupdate", produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<Vuelo> vueloUpdate(@RequestParam("idVuelo") int idVuelo,
-											 @RequestParam("plazas") int plazas) {
+	@PutMapping(value = "vueloupdate/{idVuelo}/{plazas}", produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<Vuelo> vueloUpdate(@PathVariable("idVuelo") int idVuelo,
+											 @PathVariable("plazas") int plazas) {
 		return new ResponseEntity<Vuelo>( service.vueloUpdate(idVuelo, plazas), HttpStatus.OK );
 	}
 }

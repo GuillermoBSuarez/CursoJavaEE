@@ -11,7 +11,9 @@ import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestClient;
 
 import init.dto.ReservaDTO;
+import init.model.Hotel;
 import init.model.TokenResponse;
+import init.model.Vuelo;
 import init.service.dao.ReservaDAO;
 import init.service.interfaces.ReservaService;
 import init.service.mapper.Mapper;
@@ -23,9 +25,9 @@ public class ReservaServiceImpl implements ReservaService {
 	@Autowired
 	ReservaDAO dao;
 	@Autowired
-	Mapper mapper;
-	@Autowired
 	RestClient restClient;
+	@Autowired
+	Mapper mapper;
 	
 	// Parámetros para solicitar el token a KeyCloak
 	@Value("${app.urlAuth}")
@@ -42,7 +44,9 @@ public class ReservaServiceImpl implements ReservaService {
 	String token;
 
 	String urlHoteles = "http://localhost:8001/";
+	Hotel hotel;
 	String urlVuelos = "http://localhost:8002/";
+	Vuelo vuelo;
 	
 	@PostConstruct
 	private void init() {
@@ -65,14 +69,28 @@ public class ReservaServiceImpl implements ReservaService {
 						 .getAccess_token();
 	}
 	
+	private Hotel getHotel(int IdHotel) {
+		return restClient.get()
+						 .uri(urlHoteles + "hotel/" + IdHotel)
+						 .retrieve()
+						 .body(Hotel.class);
+	}
+	
+	private Vuelo getVuelo(int IdVuelo) {
+		return restClient.get()
+						 .uri(urlVuelos + "vuelo/" + IdVuelo)
+						 .retrieve()
+						 .body(Vuelo.class);
+	}
+	
 	@Override
-	public boolean alta(ReservaDTO reserva) {
+	public boolean alta(ReservaDTO reserva, int plazas) {
 		try {
-			restClient.post()
+			restClient.put()
 					  .uri(urlVuelos +
 							  "vueloupdate/" +
 							  reserva.getVueloDTO().getIdVuelo() +
-							  reserva.getVueloDTO().getPlazas())
+							  "/" + plazas)
 					  .header("Authorization", "Bearer " + token)
 					  .retrieve()
 					  .toBodilessEntity();
@@ -82,14 +100,20 @@ public class ReservaServiceImpl implements ReservaService {
 			NO ES CORRECTO porque si hay una excepción por otro motivo no está contemplada,
 			con lo que reejecutaríamos en bucle para nada y sin saber el error. */
 			token = getToken();
-			alta(reserva);			
+			alta(reserva, plazas);			
 		}
+		hotel = getHotel(reserva.getHotelDTO().getIdHotel());
+		vuelo = getVuelo(reserva.getVueloDTO().getIdVuelo());
+		reserva.setPrecio( plazas * (vuelo.getPrecio()+hotel.getPrecio()) );
 		dao.save(mapper.reservaDTOtoEntity(reserva));
 		return true;
 	}
 
 	@Override
 	public List<ReservaDTO> reservas(String usuario) {
-		return dao.findAllByUsuario(usuario);
+		return dao.findAllByUsuario(usuario)
+				  .stream()
+				  .map( r -> mapper.reservaEntityToDTO(r) )
+				  .toList();
 	}
 }
